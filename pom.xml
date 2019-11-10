@@ -10,6 +10,10 @@
     <modules>
         <module>soc_common</module>
         <module>soc_base</module>
+        <module>soc_recruit</module>
+        <module>soc_qa</module>
+        <module>soc_article</module>
+        <module>soc_gathering</module>
     </modules>
 
     <packaging>pom</packaging>

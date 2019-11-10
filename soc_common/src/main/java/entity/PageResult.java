@@ -20,5 +20,4 @@ public class PageResult<T> {
     @JsonProperty("rows")
     private List<T> data;
 
-
 }

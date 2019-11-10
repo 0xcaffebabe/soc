@@ -4,7 +4,7 @@ spring:
   application:
     name: soc-base
   datasource:
-    url: jdbc:mysql://my-pc:3306/tensquare?characterEncoding=utf-8
+    url: jdbc:mysql://my-pc:3306/tensquare_base?characterEncoding=utf-8
     username: root
     password: 123
   jpa:

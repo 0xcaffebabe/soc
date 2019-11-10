@@ -1,0 +1,13 @@
+server: 
+  port: 9003
+spring: 
+  application:  
+    name: soc-qa
+  datasource:  
+    driverClassName: com.mysql.jdbc.Driver
+    url: jdbc:mysql://my-pc:3306/tensquare_qa?characterEncoding=UTF8
+    username: root
+    password: 123
+  jpa: 
+    database: MySQL
+    show-sql: true

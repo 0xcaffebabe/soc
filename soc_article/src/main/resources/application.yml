@@ -1,0 +1,15 @@
+server: 
+  port: 9004
+spring: 
+  application:  
+    name: soc-article
+  datasource:  
+    driverClassName: com.mysql.jdbc.Driver
+    url: jdbc:mysql://my-pc:3306/tensquare_article?characterEncoding=UTF8
+    username: root
+    password: 123
+  jpa: 
+    database: MySQL
+    show-sql: true
+  redis:
+    host: my-pc

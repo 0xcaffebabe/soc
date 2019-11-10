@@ -1,0 +1,1 @@
+mvn package --file pom.xml -Dmaven.test.skip=true
