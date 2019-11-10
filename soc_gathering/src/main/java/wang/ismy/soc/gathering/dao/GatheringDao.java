@@ -1,9 +1,10 @@
-package wang.ismy.soc.recruit.dao;
+package wang.ismy.soc.gathering.dao;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
+import wang.ismy.soc.gathering.pojo.Gathering;
 
-import wang.ismy.soc.recruit.pojo.Gathering;
+
 /**
  * 活动数据访问接口
  * @author Administrator

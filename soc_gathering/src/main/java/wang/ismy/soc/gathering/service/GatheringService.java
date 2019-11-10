@@ -1,28 +1,27 @@
-package wang.ismy.soc.recruit.service;
+package wang.ismy.soc.gathering.service;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 import java.util.Map;
 
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
-import javax.persistence.criteria.Expression;
 import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
-import javax.persistence.criteria.Selection;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 
 
 import utils.IdWorker;
-import wang.ismy.soc.recruit.dao.GatheringDao;
-import wang.ismy.soc.recruit.pojo.Gathering;
+import wang.ismy.soc.gathering.dao.GatheringDao;
+import wang.ismy.soc.gathering.pojo.Gathering;
+
 
 /**
  * 活动服务层
@@ -77,6 +76,7 @@ public class GatheringService {
 	 * @param id
 	 * @return
 	 */
+	@Cacheable(value = "gathering",key = "#id")
 	public Gathering findById(String id) {
 		return gatheringDao.findById(id).get();
 	}
@@ -94,6 +94,7 @@ public class GatheringService {
 	 * 修改
 	 * @param gathering
 	 */
+	@CacheEvict(value = "gathering",key = "#id")
 	public void update(Gathering gathering) {
 		gatheringDao.save(gathering);
 	}
@@ -102,6 +103,7 @@ public class GatheringService {
 	 * 删除
 	 * @param id
 	 */
+	@CacheEvict(value = "gathering",key = "#id")
 	public void deleteById(String id) {
 		gatheringDao.deleteById(id);
 	}

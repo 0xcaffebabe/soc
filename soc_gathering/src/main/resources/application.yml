@@ -1,0 +1,13 @@
+server: 
+  port: 9005
+spring: 
+  application:  
+    name: soc-gathering
+  datasource:  
+    driverClassName: com.mysql.jdbc.Driver
+    url: jdbc:mysql://my-pc:3306/tensquare_gathering?characterEncoding=UTF8
+    username: root
+    password: 123
+  jpa: 
+    database: MySQL
+    show-sql: true

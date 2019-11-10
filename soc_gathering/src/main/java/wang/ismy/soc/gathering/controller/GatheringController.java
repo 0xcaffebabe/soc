@@ -1,4 +1,4 @@
-package wang.ismy.soc.recruit.controller;
+package wang.ismy.soc.gathering.controller;
 import java.util.List;
 import java.util.Map;
 
@@ -11,12 +11,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import wang.ismy.soc.recruit.pojo.Gathering;
-import wang.ismy.soc.recruit.service.GatheringService;
+
 
 import entity.PageResult;
 import entity.Result;
 import entity.StatusCode;
+import wang.ismy.soc.gathering.pojo.Gathering;
+import wang.ismy.soc.gathering.service.GatheringService;
+
 /**
  * 活动控制器层
  * @author Administrator
