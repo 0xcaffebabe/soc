@@ -7,3 +7,6 @@ spring:
     mongodb:
       host: my-pc
       database: spitdb
+
+  redis:
+    host: my-pc
