@@ -1,0 +1,9 @@
+server:
+  port: 9006
+spring:
+  application:
+    name: soc-spit
+  data:
+    mongodb:
+      host: my-pc
+      database: spitdb

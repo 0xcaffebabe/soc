@@ -14,6 +14,7 @@
         <module>soc_qa</module>
         <module>soc_article</module>
         <module>soc_gathering</module>
+        <module>soc_spit</module>
     </modules>
 
     <packaging>pom</packaging>
