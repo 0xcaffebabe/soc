@@ -5,4 +5,7 @@ spring:
     name: soc-search
   data:
     elasticsearch:
-      cluster-nodes: my-pc:9200
+      repositories:
+        enabled: true
+      cluster-nodes: my-pc:9300
+      cluster-name: elasticsearch

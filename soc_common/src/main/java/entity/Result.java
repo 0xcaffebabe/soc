@@ -33,4 +33,12 @@ public class Result {
         this.message = message;
         this.data = data;
     }
+
+    public static Result success(String message){
+        return new Result(true,StatusCode.OK,message);
+    }
+
+    public static Result error(String message){
+        return new Result(false,StatusCode.ERROR,message);
+    }
 }
