@@ -1,0 +1,8 @@
+server:
+  port: 9007
+spring:
+  application:
+    name: soc-search
+  data:
+    elasticsearch:
+      cluster-nodes: my-pc:9200
