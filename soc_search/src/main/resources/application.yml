@@ -3,9 +3,18 @@ server:
 spring:
   application:
     name: soc-search
+  datasource:
+    driverClassName: com.mysql.jdbc.Driver
+    url: jdbc:mysql://my-pc:3306/tensquare_article?characterEncoding=UTF8
+    username: root
+    password: 123
+  jpa:
+    database: MySQL
+    show-sql: true
   data:
     elasticsearch:
       repositories:
         enabled: true
       cluster-nodes: my-pc:9300
       cluster-name: elasticsearch
+

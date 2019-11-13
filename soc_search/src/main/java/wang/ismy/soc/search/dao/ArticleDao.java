@@ -1,15 +1,12 @@
 package wang.ismy.soc.search.dao;
 
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
-import org.springframework.data.elasticsearch.repository.ElasticsearchRepository;
+import org.springframework.data.jpa.repository.JpaRepository;
 import wang.ismy.soc.search.pojo.Article;
+import wang.ismy.soc.search.pojo.ArticleIndex;
 
 /**
  * @author MY
- * @date 2019/11/12 22:10
+ * @date 2019/11/13 13:10
  */
-public interface ArticleDao extends ElasticsearchRepository<Article,String> {
 
-    Page<Article> findByTitleOrContentLike(String title, String content, Pageable pageable);
-}
+public interface ArticleDao extends JpaRepository<Article,String> { }

@@ -6,8 +6,8 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 import utils.IdWorker;
-import wang.ismy.soc.search.dao.ArticleDao;
-import wang.ismy.soc.search.pojo.Article;
+import wang.ismy.soc.search.dao.ArticleIndexDao;
+import wang.ismy.soc.search.pojo.ArticleIndex;
 
 /**
  * @author MY
@@ -17,21 +17,21 @@ import wang.ismy.soc.search.pojo.Article;
 @AllArgsConstructor
 public class ArticleService {
 
-    private ArticleDao articleDao;
+    private ArticleIndexDao articleDao;
     private IdWorker idWorker;
 
-    public void save(Article article) {
+    public void save(ArticleIndex article) {
         article.setId(idWorker.nextId() + "");
         articleDao.save(article);
     }
 
-    public PageResult<Article> find(String key, Integer page, Integer size) {
+    public PageResult<ArticleIndex> find(String key, Integer page, Integer size) {
         page--;
         if (page < 0) {
             page = 0;
         }
-        Page<Article> all = articleDao.findByTitleOrContentLike(key, key, PageRequest.of(page, size));
-        PageResult<Article> result = new PageResult<>();
+        Page<ArticleIndex> all = articleDao.findByTitleOrContentLike(key, key, PageRequest.of(page, size));
+        PageResult<ArticleIndex> result = new PageResult<>();
         result.setTotal(all.getTotalElements());
         result.setData(all.getContent());
         return result;
