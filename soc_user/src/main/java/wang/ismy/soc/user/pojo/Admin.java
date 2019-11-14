@@ -1,4 +1,4 @@
-package wang.ismy.soc.recruit.pojo;
+package wang.ismy.soc.user.pojo;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;

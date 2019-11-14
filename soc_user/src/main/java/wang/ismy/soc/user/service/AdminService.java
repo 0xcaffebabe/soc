@@ -1,28 +1,23 @@
-package wang.ismy.soc.recruit.service;
+package wang.ismy.soc.user.service;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 import java.util.Map;
 
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
-import javax.persistence.criteria.Expression;
 import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
-import javax.persistence.criteria.Selection;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
-
-
 import utils.IdWorker;
-import wang.ismy.soc.recruit.dao.AdminDao;
-import wang.ismy.soc.recruit.pojo.Admin;
+import wang.ismy.soc.user.dao.AdminDao;
+import wang.ismy.soc.user.pojo.Admin;
+
 
 /**
  * 管理员服务层

@@ -34,6 +34,8 @@ public class Result {
         this.data = data;
     }
 
+
+
     public static Result success(String message){
         return new Result(true,StatusCode.OK,message);
     }

@@ -16,6 +16,7 @@
         <module>soc_gathering</module>
         <module>soc_spit</module>
         <module>soc_search</module>
+        <module>soc_user</module>
     </modules>
 
     <packaging>pom</packaging>

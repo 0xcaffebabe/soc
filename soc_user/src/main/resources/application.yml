@@ -1,0 +1,17 @@
+server:
+  port: 9008
+spring:
+  datasource:
+    driverClassName: com.mysql.jdbc.Driver
+    url: jdbc:mysql://my-pc:3306/tensquare_user?characterEncoding=UTF8
+    username: root
+    password: 123
+  jpa:
+    database: mysql
+    show-sql: true
+  application:
+    name: soc-user
+  rabbitmq:
+    host: my-pc
+  redis:
+    host: my-pc
