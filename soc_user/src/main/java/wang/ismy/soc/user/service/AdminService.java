@@ -19,6 +19,7 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.RequestHeader;
 import utils.IdWorker;
 import utils.JwtUtil;
 import wang.ismy.soc.user.dao.AdminDao;
@@ -45,22 +46,9 @@ public class AdminService {
      *
      * @return
      */
-    public List<Admin> findAll(String token) {
-        if (StringUtils.isEmpty(token)) {
-            throw new RuntimeException("无权限");
-        }
+    public List<Admin> findAll() {
 
-        try{
-            Claims claims = jwtUtil.parseJWT(token);
-            if (!"admin".equals(claims.get("roles"))){
-                throw new RuntimeException("无权限");
-            }
-
-            return adminDao.findAll();
-        }catch (Exception e){
-            throw new RuntimeException("无权限");
-        }
-
+        return adminDao.findAll();
     }
 
 

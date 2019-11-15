@@ -5,6 +5,7 @@ import entity.PageResult;
 import entity.Result;
 import entity.StatusCode;
 import lombok.AllArgsConstructor;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.web.bind.annotation.*;
@@ -47,8 +48,11 @@ public class AdminController {
 	 * @return
 	 */
 	@RequestMapping(method= RequestMethod.GET)
-	public Result findAll(@RequestHeader("Authorization") String token){
-		return new Result(true, StatusCode.OK,"查询成功",adminService.findAll(token));
+	public Result findAll(@RequestAttribute(value = "roles",required = false) String roles){
+		if (StringUtils.isEmpty(roles) || !"admin".equals(roles)){
+			return Result.error("无权限");
+		}
+		return new Result(true, StatusCode.OK,"查询成功",adminService.findAll());
 	}
 	
 	/**
