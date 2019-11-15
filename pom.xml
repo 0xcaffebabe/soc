@@ -17,6 +17,7 @@
         <module>soc_spit</module>
         <module>soc_search</module>
         <module>soc_user</module>
+        <module>soc_sms</module>
     </modules>
 
     <packaging>pom</packaging>

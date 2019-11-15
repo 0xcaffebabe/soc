@@ -4,14 +4,11 @@ import java.util.Map;
 import entity.PageResult;
 import entity.Result;
 import entity.StatusCode;
+import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+import utils.JwtUtil;
 import wang.ismy.soc.user.pojo.Admin;
 import wang.ismy.soc.user.service.AdminService;
 
@@ -23,19 +20,35 @@ import wang.ismy.soc.user.service.AdminService;
 @RestController
 @CrossOrigin
 @RequestMapping("/admin")
+@AllArgsConstructor
 public class AdminController {
 
-	@Autowired
+
 	private AdminService adminService;
-	
+	private JwtUtil jwtUtil;
+
+	@PostMapping("login")
+	public Result login(@RequestBody Admin admin){
+		Admin login = adminService.login(admin);
+		if (login == null){
+			return new Result(false,StatusCode.LOGIN_ERROR,"登录失败");
+		}
+
+		String token = jwtUtil.createJWT(login.getId(), login.getLoginname(), "admin");
+		Map<String, String> map = Map.of(
+				"token", token,
+				"role","admin"
+		);
+		return new Result(true,StatusCode.OK,"登录成功",map);
+	}
 	
 	/**
 	 * 查询全部数据
 	 * @return
 	 */
 	@RequestMapping(method= RequestMethod.GET)
-	public Result findAll(){
-		return new Result(true, StatusCode.OK,"查询成功",adminService.findAll());
+	public Result findAll(@RequestHeader("Authorization") String token){
+		return new Result(true, StatusCode.OK,"查询成功",adminService.findAll(token));
 	}
 	
 	/**

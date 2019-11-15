@@ -13,6 +13,7 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.data.redis.core.RedisTemplate;
 
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import utils.IdWorker;
@@ -44,6 +45,7 @@ public class UserService {
     private RedisTemplate redisTemplate;
     private RabbitTemplate rabbitTemplate;
     private IdWorker idWorker;
+    private BCryptPasswordEncoder passwordEncoder;
 
     public void sendSms(String phone) {
         String code = RandomStringUtils.randomNumeric(6);
@@ -66,8 +68,16 @@ public class UserService {
             return Result.error("验证码错误");
         }
         user.setId(idWorker.nextId() + "");
-
+        user.setPassword(passwordEncoder.encode(user.getPassword()));
         userDao.save(user);
         return Result.success("注册成功");
+    }
+
+    public User login(User user) {
+        User result = userDao.findByMobile(user.getMobile());
+        if (result != null && passwordEncoder.matches(user.getPassword(),result.getPassword())){
+            return result;
+        }
+        return null;
     }
 }

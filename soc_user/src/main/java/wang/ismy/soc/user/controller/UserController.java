@@ -1,6 +1,7 @@
 package wang.ismy.soc.user.controller;
 
 import entity.Result;
+import entity.StatusCode;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 import wang.ismy.soc.user.pojo.User;
@@ -29,5 +30,15 @@ public class UserController {
     @PostMapping("register/{code}")
     public Result register(@PathVariable String code, @RequestBody User user){
         return userService.register(code,user);
+    }
+
+    @PostMapping("login")
+    public Result login(@RequestBody User user){
+        user = userService.login(user);
+        if (user == null){
+            return new Result(false, StatusCode.LOGIN_ERROR,"登录失败");
+        }
+        // TODO jwt
+        return Result.success("登录成功");
     }
 }

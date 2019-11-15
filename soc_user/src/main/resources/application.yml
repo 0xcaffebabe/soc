@@ -15,3 +15,9 @@ spring:
     host: my-pc
   redis:
     host: my-pc
+jwt:
+  config:
+    key: ifojesd;atf
+    ttl: 3600000
+
+

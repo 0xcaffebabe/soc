@@ -3,7 +3,9 @@ package wang.ismy.soc.user;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import utils.IdWorker;
+import utils.JwtUtil;
 
 /**
  * @author MY
@@ -18,5 +20,15 @@ public class UserApplication {
     @Bean
     public IdWorker idWorker(){
         return new IdWorker();
+    }
+
+    @Bean
+    public BCryptPasswordEncoder encoder(){
+        return new BCryptPasswordEncoder();
+    }
+
+    @Bean
+    public JwtUtil jwtUtil(){
+        return new JwtUtil();
     }
 }

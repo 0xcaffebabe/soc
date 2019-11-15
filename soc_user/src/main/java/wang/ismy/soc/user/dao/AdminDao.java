@@ -11,5 +11,12 @@ import wang.ismy.soc.user.pojo.Admin;
  *
  */
 public interface AdminDao extends JpaRepository<Admin,String>,JpaSpecificationExecutor<Admin>{
-	
+
+
+    /**
+     * 根据登录名查询
+     * @param loginName
+     * @return
+     */
+    Admin findByLoginname(String loginName);
 }
