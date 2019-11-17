@@ -1,0 +1,17 @@
+server:
+  port: 9010
+spring:
+  application:
+    name: soc-friend
+  datasource:
+    driverClassName: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://my-pc:3306/tensquare_friend?characterEncoding=UTF8
+    username: root
+    password: 123
+  jpa:
+    database: MySQL
+    show-sql: true
+eureka:
+  client:
+    service-url:
+      defaultZone: http://127.0.0.1:6868/eureka/

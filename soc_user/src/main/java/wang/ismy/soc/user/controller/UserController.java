@@ -4,8 +4,11 @@ import entity.Result;
 import entity.StatusCode;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
+import utils.JwtUtil;
 import wang.ismy.soc.user.pojo.User;
 import wang.ismy.soc.user.service.UserService;
+
+import java.util.Map;
 
 
 /**
@@ -20,6 +23,7 @@ import wang.ismy.soc.user.service.UserService;
 public class UserController {
 
     private UserService userService;
+    private JwtUtil jwtUtil;
 
     @PostMapping("sendsms/{phone}")
     public Result sendSms(@PathVariable String phone){
@@ -38,7 +42,11 @@ public class UserController {
         if (user == null){
             return new Result(false, StatusCode.LOGIN_ERROR,"登录失败");
         }
-        // TODO jwt
-        return Result.success("登录成功");
+        String token = jwtUtil.createJWT(user.getId(), user.getNickname(), "user");
+        Map<String, String> map = Map.of(
+                "token", token,
+                "role","user"
+        );
+        return new Result(true,StatusCode.OK,"登录成功",map);
     }
 }

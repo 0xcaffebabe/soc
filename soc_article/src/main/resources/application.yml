@@ -1,15 +1,21 @@
-server: 
+server:
   port: 9004
-spring: 
-  application:  
+spring:
+  application:
     name: soc-article
-  datasource:  
+  datasource:
     driverClassName: com.mysql.jdbc.Driver
     url: jdbc:mysql://my-pc:3306/tensquare_article?characterEncoding=UTF8
     username: root
     password: 123
-  jpa: 
+  jpa:
     database: MySQL
     show-sql: true
   redis:
     host: my-pc
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:6868/eureka/
+  instance:
+    prefer-ip-address: true
