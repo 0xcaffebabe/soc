@@ -25,6 +25,15 @@ public class UserController {
     private UserService userService;
     private JwtUtil jwtUtil;
 
+
+    /**
+     * 更新粉丝数与关注数
+     */
+    @PutMapping("/{userId}/{friendId}/{count}")
+    public void updateFansAndFollow(@PathVariable String userId,@PathVariable String friendId,@PathVariable int count){
+        userService.updateFansAndFollow(userId,friendId,count);
+    }
+
     @PostMapping("sendsms/{phone}")
     public Result sendSms(@PathVariable String phone){
         userService.sendSms(phone);

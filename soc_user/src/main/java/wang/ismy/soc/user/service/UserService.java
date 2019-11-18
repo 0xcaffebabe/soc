@@ -80,4 +80,9 @@ public class UserService {
         }
         return null;
     }
+
+    public void updateFansAndFollow(String userId, String friendId, int count) {
+        userDao.updateFansNum(count,userId);
+        userDao.updateFollowNum(count,friendId);
+    }
 }

@@ -19,29 +19,39 @@ public class FriendController {
 
     @PutMapping("like/{friendId}/{type}")
     public Result addFriend(@PathVariable String friendId, @PathVariable String type,
-                            @RequestAttribute(value = "id",required = false) String userId) {
-        if (StringUtils.isEmpty(userId)){
+                            @RequestAttribute(value = "id", required = false) String userId) {
+        if (StringUtils.isEmpty(userId)) {
             return Result.error("权限不足");
         }
         if (!StringUtils.isEmpty(type)) {
-            if ("1".equals(type)){
+            if ("1".equals(type)) {
                 // 添加好友
-                int f = friendService.addFriend(userId,friendId);
-                if (f == 1){
+                int f = friendService.addFriend(userId, friendId);
+                if (f == 1) {
                     return Result.success("添加成功");
-                }else {
+                } else {
                     return Result.error("不能重复添加");
                 }
-            }else if ("2".equals(type)) {
+            } else if ("2".equals(type)) {
                 // 添加非好友
-                int f = friendService.addNoFriend(userId,friendId);
-                if (f == 0){
+                int f = friendService.addNoFriend(userId, friendId);
+                if (f == 0) {
                     return Result.error("不能重复添加");
-                }else {
+                } else {
                     return Result.success("添加成功");
                 }
             }
         }
         return Result.error("参数异常");
+    }
+
+    @DeleteMapping("/{friendId}")
+    public Result deleteFriend(@PathVariable String friendId, @RequestAttribute(value = "id", required = false) String userId) {
+        if (StringUtils.isEmpty(userId)){
+            return Result.error("权限不足");
+        }
+
+        friendService.deleteFriend(userId,friendId);
+        return Result.success("删除成功");
     }
 }
