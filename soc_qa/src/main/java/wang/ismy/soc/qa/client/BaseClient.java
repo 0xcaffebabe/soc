@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.PathVariable;
  * @author MY
  * @date 2019/11/17 14:17
  */
-@FeignClient("soc-base")
+@FeignClient(value = "soc-base",fallback = BaseClientImpl.class)
 public interface BaseClient {
 
     @GetMapping("/label/{id}")

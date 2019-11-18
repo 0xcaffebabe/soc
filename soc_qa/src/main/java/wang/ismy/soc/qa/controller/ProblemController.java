@@ -1,6 +1,7 @@
 package wang.ismy.soc.qa.controller;
 import java.util.Map;
 
+import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.web.bind.annotation.*;
@@ -9,6 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import entity.PageResult;
 import entity.Result;
 import entity.StatusCode;
+import wang.ismy.soc.qa.client.BaseClient;
 import wang.ismy.soc.qa.pojo.Problem;
 import wang.ismy.soc.qa.service.ProblemService;
 
@@ -20,11 +22,16 @@ import wang.ismy.soc.qa.service.ProblemService;
 @RestController
 @CrossOrigin
 @RequestMapping("/problem")
+@AllArgsConstructor
 public class ProblemController {
 
-
-	@Autowired
 	private ProblemService problemService;
+	private BaseClient baseClient;
+
+	@GetMapping("error")
+	public Result error(){
+		return baseClient.findById("1");
+	}
 
 	@GetMapping("newlist/{label}/{page}/{size}")
 	public Result newList(@PathVariable String label,@PathVariable Integer page,@PathVariable Integer size){
