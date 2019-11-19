@@ -4,7 +4,9 @@ import entity.PageResult;
 import entity.Result;
 import entity.StatusCode;
 import lombok.AllArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.context.request.RequestContextHolder;
 import wang.ismy.soc.base.pojo.Label;
 import wang.ismy.soc.base.service.LabelService;
 
@@ -16,13 +18,15 @@ import wang.ismy.soc.base.service.LabelService;
 @CrossOrigin
 @RequestMapping("label")
 @AllArgsConstructor
+@Slf4j
 public class LabelController {
 
     private LabelService labelService;
 
     @GetMapping
-    public Result findList(){
-        int a=1/0;
+    public Result findList(@RequestHeader("Authorization") String jwt){
+
+        log.info("jwt头：{}",jwt);
         return new Result(true, StatusCode.OK.getCode(),"查询成功",labelService.findList());
     }
 
