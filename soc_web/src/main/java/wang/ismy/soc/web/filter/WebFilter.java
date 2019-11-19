@@ -34,7 +34,10 @@ public class WebFilter extends ZuulFilter {
         RequestContext currentContext = RequestContext.getCurrentContext();
         String header = currentContext.getRequest().getHeader("Authorization");
         // 转发jwt头
-        currentContext.addZuulRequestHeader("Authorization", header);
+        if (!StringUtils.isEmpty(header)) {
+            currentContext.addZuulRequestHeader("Authorization", header);
+        }
+
         return null;
     }
 }

@@ -5,6 +5,7 @@ import entity.PageResult;
 import entity.Result;
 import entity.StatusCode;
 import lombok.AllArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -22,6 +23,7 @@ import wang.ismy.soc.user.service.AdminService;
 @CrossOrigin
 @RequestMapping("/admin")
 @AllArgsConstructor
+@Slf4j
 public class AdminController {
 
 
@@ -49,6 +51,7 @@ public class AdminController {
 	 */
 	@RequestMapping(method= RequestMethod.GET)
 	public Result findAll(@RequestAttribute(value = "roles",required = false) String roles){
+
 		if (StringUtils.isEmpty(roles) || !"admin".equals(roles)){
 			return Result.error("无权限");
 		}

@@ -18,3 +18,4 @@ zuul:
     soc-qa:
       path: /qa/**
       serviceId: soc-qa
+  sensitive-headers:

@@ -18,3 +18,8 @@ zuul:
     soc-qa:
       path: /qa/**
       serviceId: soc-qa
+  sensitive-headers:
+jwt:
+  config:
+    key: ifojesd;atf
+    ttl: 3600000

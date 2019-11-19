@@ -22,6 +22,7 @@
         <module>soc_friend</module>
         <module>soc_manager</module>
         <module>soc_web</module>
+        <module>soc_config</module>
     </modules>
 
     <packaging>pom</packaging>
