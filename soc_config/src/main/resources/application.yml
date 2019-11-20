@@ -7,13 +7,13 @@ spring:
     config:
       server:
         git:
-          uri: http://my-pc:880/root/soc.git
+          uri: http://172.17.0.1:880/root/soc.git
   rabbitmq:
-    host: my-pc
+    host: 172.17.0.1
 eureka:
   client:
     service-url:
-      defaultZone: http://127.0.0.1:6868/eureka/
+      defaultZone: http://172.17.0.1:6868/eureka/
 management:
   endpoints:
     web:
