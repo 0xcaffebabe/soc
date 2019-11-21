@@ -1,2 +1,6 @@
 entity\PageResult.class
+interceptor\JwtInterceptor.class
+entity\StatusCode.class
+utils\JwtUtil.class
 entity\Result.class
+utils\IdWorker.class
